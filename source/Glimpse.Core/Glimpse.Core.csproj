@@ -62,6 +62,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
     <Reference Include="Tavis.UriTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Tavis.UriTemplates.0.1.1\lib\NET40\Tavis.UriTemplates.dll</HintPath>
     </Reference>
@@ -70,21 +71,12 @@
     <Compile Include="ClientScript\Client.cs" />
     <Compile Include="ClientScript\Data.cs" />
     <Compile Include="ClientScript\Metadata.cs" />
-    <Compile Include="Configuration\ContentTypeElement.cs" />
-    <Compile Include="Configuration\ContentTypeElementCollection.cs" />
+    <Compile Include="Configuration\CustomConfigurationElement.cs" />
     <Compile Include="Configuration\DiscoverableCollectionElement.cs" />
     <Compile Include="Configuration\Section.cs" />
     <Compile Include="Configuration\LoggingElement.cs" />
     <Compile Include="Configuration\LoggingLevel.cs" />
-    <Compile Include="Configuration\PolicyDiscoverableCollectionElement.cs" />
-    <Compile Include="Configuration\RegexConverter.cs" />
-    <Compile Include="Configuration\RegexElement.cs" />
-    <Compile Include="Configuration\RegexElementCollection.cs" />
-    <Compile Include="Configuration\StatusCodeElement.cs" />
-    <Compile Include="Configuration\StatusCodeElementCollection.cs" />
     <Compile Include="Configuration\TypeConverter.cs" />
-    <Compile Include="Configuration\TypeElement.cs" />
-    <Compile Include="Configuration\TypeElementCollection.cs" />
     <Compile Include="Display\TimingsDisplay.cs" />
     <Compile Include="Extensibility\AlternateType.cs" />
     <Compile Include="Extensibility\AlternateTypeGenerationHook.cs" />
@@ -92,6 +84,8 @@
     <Compile Include="Extensibility\AlternateMethod.cs" />
     <Compile Include="Extensibility\AntiXssEncoder.cs" />
     <Compile Include="Extensibility\CastleInvocationToAlternateMethodContextAdapter.cs" />
+    <Compile Include="Extensibility\IConfigurableExtended.cs" />
+    <Compile Include="Extensibility\IConfigurator.cs" />
     <Compile Include="Extensibility\IDependOnResources.cs" />
     <Compile Include="Extensibility\DictionaryDataStoreAdapter.cs" />
     <Compile Include="Extensibility\ExecutionTimer.cs" />
@@ -103,6 +97,7 @@
     <Compile Include="Extensibility\ILayoutControl.cs" />
     <Compile Include="Extensibility\IParameterValueProvider.cs" />
     <Compile Include="Extensibility\IPrivilegedResource.cs" />
+    <Compile Include="Extensibility\IUriPolicyConfigurator.cs" />
     <Compile Include="Extensibility\ITabLayout.cs" />
     <Compile Include="Extensibility\IWrapper.cs" />
     <Compile Include="Extensibility\JsonNetConverterDictionaryKeysAreNotPropertyNames.cs" />
@@ -115,6 +110,12 @@
     <Compile Include="Framework\ReflectionBlackList.cs" />
     <Compile Include="Framework\Support\ExecutionBlockBase.cs" />
     <Compile Include="Framework\Support\IExecutionTask.cs" />
+    <Compile Include="Policy\AddRemoveClearItemsConfigurator.cs" />
+    <Compile Include="Policy\ContentTypePolicyConfigurator.cs" />
+    <Compile Include="Extensibility\IContentTypePolicyConfigurator.cs" />
+    <Compile Include="Extensibility\IStatusCodePolicyConfigurator.cs" />
+    <Compile Include="Policy\StatusCodePolicyConfigurator.cs" />
+    <Compile Include="Policy\UriPolicyConfigurator.cs" />
     <Compile Include="Resource\ConfigurationScriptResource.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -312,7 +313,6 @@
     <EmbeddedResource Include="EmbeddedResources\glimpse_config.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
